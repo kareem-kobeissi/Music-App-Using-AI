@@ -1,0 +1,65 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Ensure Flutter plugin is last
+}
+
+android {
+    namespace "com.example.client" // Ensure correct namespace
+    compileSdk 35 // Correct format
+
+    ndkVersion "25.2.9519653" // Ensure this is the NDK version you need
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    defaultConfig {
+        applicationId "com.example.client" // This should match the namespace
+        minSdk 21
+        targetSdk 34 // Correct format (targetSdkVersion is deprecated)
+        versionCode 1
+        versionName "1.0"
+
+      
+        // Enable Multidex if needed
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/app/debug.keystore") // Corrected path
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.debug // Use debug keystore for now
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source "../.." // This is correct for Flutter projects
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1' // Required for just_audio
+
+    // Add Multidex dependency if you enabled it
+    implementation 'androidx.multidex:multidex:2.0.1' // Ensure this is present if multiDexEnabled is true
+}

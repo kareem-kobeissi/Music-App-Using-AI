@@ -1,0 +1,2 @@
+C:/Users/WIMAX COMPUTECH/OneDrive/Desktop/musicapp/client/android/app/.cxx/Debug/1j5x1543/x86/CMakeFiles/edit_cache.dir
+C:/Users/WIMAX COMPUTECH/OneDrive/Desktop/musicapp/client/android/app/.cxx/Debug/1j5x1543/x86/CMakeFiles/rebuild_cache.dir
